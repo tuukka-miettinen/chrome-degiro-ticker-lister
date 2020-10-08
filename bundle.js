@@ -100,7 +100,11 @@ const generateTickerSymbols = () => {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.message === 'TabUpdated') {
-        if (document.location.href.search(/.*degiro.*trader.*portfolio.*/) > 0) {
+        console.log(document.location.href)
+        console.log(document.location.href.search(/.*degiro.*/))
+        console.log(document.location.href.search(/degiro/))
+        console.log("test", document.location.href.search(/.*degiro.*trader.*portfolio.*/));
+        if (/.*degiro.*trader.*portfolio.*/.test(document.location.href)) {
             console.log("Fetching symbols");
             generateTickerSymbols();
         }
